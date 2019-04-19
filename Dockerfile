@@ -1,11 +1,12 @@
 FROM openjdk:8
 
-MAINTAINER Takao Chiba <chibatching.apps@gmail.com>
+MAINTAINER Mithun Kundu <mithunkundu1983@gmail.com>
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get update && \
     apt-get install -yq libc6 libstdc++6 zlib1g libncurses5 build-essential libssl-dev ruby ruby-dev --no-install-recommends && \
+    apt-get install -yq locales ca-certificates nano rsync sudo zip git wget libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1 python curl psmisc module-init-tools python-pip  && \
     apt-get clean
     
 RUN gem install bundler
@@ -32,6 +33,13 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools" && \
     $ANDROID_HOME/tools/bin/sdkmanager "build-tools;28.0.3" "build-tools;27.0.3" && \
     $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-28" "platforms;android-27" && \
     $ANDROID_HOME/tools/bin/sdkmanager "extras;android;m2repository" "extras;google;m2repository"
+
+# Updating everything again
+RUN sdkmanager --update
+
+#accepting licenses
+RUN yes | sdkmanager --licenses
+RUN sdkmanager --version
 ##################
 # Speeding up android builds
 # Gradle will pick these properties when running

@@ -32,3 +32,14 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools" && \
     $ANDROID_HOME/tools/bin/sdkmanager "build-tools;28.0.3" "build-tools;27.0.3" && \
     $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-28" "platforms;android-27" && \
     $ANDROID_HOME/tools/bin/sdkmanager "extras;android;m2repository" "extras;google;m2repository"
+##################
+# Speeding up android builds
+# Gradle will pick these properties when running
+##################
+RUN mkdir ~/.gradle
+RUN echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
+RUN echo "org.gradle.jvmargs=-Xmx4096m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" >> ~/.gradle/gradle.properties
+RUN echo "org.gradle.parallel=true" >> ~/.gradle/gradle.properties
+RUN echo "org.gradle.configureondemand=true" >> ~/.gradle/gradle.properties
+RUN echo "android.builder.sdkDownload=true" >> ~/.gradle/gradle.properties
+RUN rm -rf /var/lib/apt/lists/*

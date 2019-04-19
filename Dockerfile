@@ -6,7 +6,7 @@ RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get update && \
     apt-get install -yq libc6 libstdc++6 zlib1g libncurses5 build-essential libssl-dev ruby ruby-dev --no-install-recommends && \
-    apt-get install -yq locales ca-certificates nano rsync sudo zip git wget libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1 python curl psmisc module-init-tools python-pip  && \
+    apt-get install -yq locales ca-certificates nano rsync sudo zip git wget libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1 && \
     apt-get clean
     
 RUN gem install bundler

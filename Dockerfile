@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM gradle:4.1-jdk8
 
 MAINTAINER Mithun Kundu <mithunkundu1983@gmail.com>
 

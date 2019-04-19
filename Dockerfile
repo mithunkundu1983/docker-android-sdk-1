@@ -46,7 +46,6 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager --version
 # Speeding up android builds
 # Gradle will pick these properties when running
 ##################
-RUN mkdir ~/.gradle
 RUN echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
 RUN echo "org.gradle.jvmargs=-Xmx4096m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" >> ~/.gradle/gradle.properties
 RUN echo "org.gradle.parallel=true" >> ~/.gradle/gradle.properties

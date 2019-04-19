@@ -35,11 +35,11 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools" && \
     $ANDROID_HOME/tools/bin/sdkmanager "extras;android;m2repository" "extras;google;m2repository"
 
 # Updating everything again
-RUN $ANDROID_HOME/tools/bin/sdkmanage --update
+RUN $ANDROID_HOME/tools/bin/sdkmanager --update
 
 #accepting licenses
-RUN yes | $ANDROID_HOME/tools/bin/sdkmanage --licenses
-RUN $ANDROID_HOME/tools/bin/sdkmanage --version
+RUN yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+RUN $ANDROID_HOME/tools/bin/sdkmanager --version
 ##################
 # Speeding up android builds
 # Gradle will pick these properties when running
